@@ -10,12 +10,14 @@ import { createRoot } from "react-dom/client";
 import { App } from "./App";
 import { BrowserRouter } from "react-router-dom";
 import "../styles/globals.css";
+import { Toaster } from "./components/ui/sonner";
 
 const elem = document.getElementById("root")!;
 const app = (
   <StrictMode>
     <BrowserRouter>
       <App />
+      <Toaster richColors position="top-right" />
     </BrowserRouter>
   </StrictMode>
 );
