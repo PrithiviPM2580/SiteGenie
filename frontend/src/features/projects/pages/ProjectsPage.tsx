@@ -1,10 +1,22 @@
 import React from "react";
-import useProjects from "../hooks/useProjects";
-import { toast } from "sonner";
 import { SpinnerCustom } from "@/components/ui/spinner";
+import { DUMMY_PROJECT_CARDS } from "@/constants";
+import { Button } from "@/components/ui/button";
+import { PlusIcon, Trash2Icon } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function ProjectsPage() {
-  const { projects, loading, error } = useProjects();
+  const loading = false;
+  const navigate = useNavigate();
+
+  const getPreviewDoc = (doc: string) =>
+    doc.includes("</head>")
+      ? doc.replace(
+          "</head>",
+          "<style>html,body{height:100%;overflow:hidden !important;scrollbar-width:none;}body::-webkit-scrollbar{display:none;}</style></head>",
+        )
+      : doc;
+
   return (
     <section className="h-svh overflow-hidden bg-[#050505] text-white">
       <div className="relative isolate h-full">
@@ -17,24 +29,102 @@ export default function ProjectsPage() {
           {/* <div className="absolute left-1/2 top-[14%] h-96 w-96 -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.05)_18%,rgba(0,0,0,0)_62%)] blur-3xl" /> */}
         </div>
 
-        <div className="relative mx-auto flex h-full w-full max-w-7xl flex-col px-5 pb-10 pt-5 sm:px-6 lg:px-8">
-          <div className="flex flex-1 items-center justify-center pt-10 sm:pt-14 lg:pt-16">
-            <div className="relative flex w-full max-w-5xl flex-col items-center text-center">
-              <div className="pointer-events-none absolute left-1/2 top-[34%] -z-10 -translate-x-1/2 -translate-y-1/2 opacity-70">
-                <div className="loader loader--hero" aria-hidden="true">
-                  <div className="loader-box" />
-                  <div className="loader-box" />
-                  <div className="loader-box" />
-                  <div className="loader-box" />
-                  <div className="loader-box" />
-                  <div className="loader-core" />
-                </div>
-              </div>
+        <div className="relative mx-auto flex h-full w-full max-w-7xl flex-col px-5 pb-6 pt-32 sm:px-6 lg:px-8">
+          <div className="mb-4 flex items-end justify-between">
+            <div>
+              <p className="mb-1 text-xs uppercase tracking-[0.22em] text-white/40">
+                Workspace
+              </p>
+              <h1 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
+                My Projects
+              </h1>
+            </div>
+            <Button className="rounded-full bg-[color-mix(in_oklch,var(--primary)_90%,black)] px-5 text-sm font-semibold text-white shadow-[0_16px_50px_color-mix(in_oklch,var(--primary)_30%,transparent)] hover:bg-[color-mix(in_oklch,var(--primary)_100%,black)]">
+              <PlusIcon className="size-4" />
+              Create New
+            </Button>
+          </div>
+
+          <div className="min-h-0 flex-1 overflow-auto pr-1 [scrollbar-width:thin] [scrollbar-color:color-mix(in_oklch,var(--primary)_45%,black)_transparent]">
+            <div className="grid grid-cols-1 gap-4 pb-2 sm:grid-cols-2 lg:grid-cols-4">
+              {DUMMY_PROJECT_CARDS.map((project) => (
+                <article
+                  onClick={() => navigate(`/projects/${project.id}`)}
+                  key={project.id}
+                  className="group rounded-[1.4rem] cursor-pointer bg-[linear-gradient(135deg,color-mix(in_oklch,var(--primary)_36%,transparent)_0%,rgba(255,255,255,0.04)_24%,rgba(255,255,255,0.02)_52%,rgba(0,0,0,0.35)_100%)] p-px shadow-[0_14px_34px_rgba(0,0,0,0.46)] transition-transform duration-300 hover:-translate-y-0.5"
+                >
+                  <div className="overflow-hidden rounded-[1.35rem] border border-white/8 bg-[linear-gradient(180deg,#151c2d_0%,#0e1424_52%,#090c16_100%)]">
+                    <div className="relative aspect-video overflow-hidden bg-[#0a0e16]">
+                      <iframe
+                        title={`${project.name} preview`}
+                        srcDoc={getPreviewDoc(project.previewDoc)}
+                        className="pointer-events-none h-[400%] w-[400%] origin-top-left scale-25 border-0"
+                        sandbox="allow-scripts allow-same-origin"
+                        loading="lazy"
+                      />
+
+                      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-[#090c16] via-[#090c16]/85 to-transparent" />
+
+                      <button
+                        type="button"
+                        className="absolute right-2 top-2 rounded-md border border-[color-mix(in_oklch,var(--primary)_18%,white)] bg-black/55 p-1.5 text-white/75 transition hover:border-[color-mix(in_oklch,var(--primary)_42%,white)] hover:text-[color-mix(in_oklch,var(--primary)_70%,white)]"
+                        aria-label="Delete project"
+                      >
+                        <Trash2Icon className="size-4" />
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3 p-3.5">
+                    <div className="flex items-center justify-between gap-2">
+                      <h2 className="line-clamp-2 text-base font-semibold leading-5 text-white">
+                        {project.name}
+                      </h2>
+
+                      <span className="shrink-0 rounded-full border border-[color-mix(in_oklch,var(--primary)_35%,transparent)] bg-[color-mix(in_oklch,var(--primary)_16%,black)] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-[color-mix(in_oklch,var(--primary)_82%,white)]">
+                        {project.badge}
+                      </span>
+                    </div>
+
+                    <p className="line-clamp-2 text-sm leading-5 text-white/55">
+                      {project.prompt}
+                    </p>
+
+                    <div className="flex items-center justify-between pt-1 text-[11px] text-white/40">
+                      <span>{project.createdAt}</span>
+
+                      <div className="flex gap-1.5">
+                        <button
+                          onClick={() =>
+                            navigate(`/preview/${project.preview}`)
+                          }
+                          type="button"
+                          className="rounded-md border border-[color-mix(in_oklch,var(--primary)_26%,transparent)] bg-[color-mix(in_oklch,var(--primary)_20%,black)] px-2.5 py-1 text-[11px] font-medium text-white/90 transition hover:bg-[color-mix(in_oklch,var(--primary)_32%,black)]"
+                        >
+                          Preview
+                        </button>
+                        <button
+                          onClick={() => navigate(`/projects/${project.id}`)}
+                          type="button"
+                          className="rounded-md bg-white/10 px-2.5 py-1 text-[11px] font-medium text-white/90 transition hover:bg-white/20"
+                        >
+                          Open
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </div>
       </div>
-      {loading ? <SpinnerCustom /> : <div>Hello</div>}
+
+      {loading ? (
+        <div className="absolute inset-0 z-20 bg-black/30 backdrop-blur-[1px]">
+          <SpinnerCustom />
+        </div>
+      ) : null}
     </section>
   );
 }

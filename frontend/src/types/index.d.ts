@@ -4,6 +4,16 @@ export interface NavbarItem {
   link: string;
 }
 
+export interface ProjectPreviewCard {
+  id: string;
+  preview: string;
+  name: string;
+  prompt: string;
+  badge: string;
+  createdAt: string;
+  previewDoc: string;
+}
+
 export interface User {
   id: string;
   email: string;
