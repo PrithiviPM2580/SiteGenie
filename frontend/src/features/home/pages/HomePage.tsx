@@ -1,13 +1,11 @@
-import { Link } from "react-router-dom";
-
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo.png";
 import { Textarea } from "@/components/ui/textarea";
+import { BotMessageSquareIcon } from "lucide-react";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen overflow-hidden bg-[#050505] text-white">
-      <div className="relative isolate min-h-screen">
+    <section className="h-dvh overflow-hidden bg-[#050505] text-white">
+      <div className="relative isolate h-full">
         <div className="absolute inset-x-0 top-0 h-[70vh] bg-[radial-gradient(circle_at_50%_12%,color-mix(in_oklch,var(--primary)_34%,transparent)_0%,transparent_38%),linear-gradient(180deg,color-mix(in_oklch,var(--primary)_12%,black)_0%,rgba(5,5,5,0.35)_45%,#050505_100%)]" />
         <div className="absolute inset-x-0 top-0 h-[74vh] overflow-hidden">
           <div className="absolute left-[-12%] top-[8%] h-208 w-208 -translate-y-1/2 rounded-full bg-[radial-gradient(circle_at_65%_50%,color-mix(in_oklch,var(--primary)_62%,white)_0%,color-mix(in_oklch,var(--primary)_40%,black)_28%,rgba(0,0,0,0)_66%)] blur-3xl" />
@@ -17,47 +15,8 @@ export default function HomePage() {
           {/* <div className="absolute left-1/2 top-[14%] h-96 w-96 -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.05)_18%,rgba(0,0,0,0)_62%)] blur-3xl" /> */}
         </div>
 
-        <div className="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col px-5 pb-10 pt-5 sm:px-6 lg:px-8">
-          <header className="flex items-center justify-between rounded-full border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-xl">
-            <div className="flex items-center gap-3">
-              <div className="w-6 h-6 rounded-sm overflow-hidden">
-                <img
-                  src={logo}
-                  alt="Logo Image"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div>
-                <p className="text-sm font-semibold tracking-wide text-white">
-                  Site Genie
-                </p>
-              </div>
-            </div>
-
-            <nav className="hidden items-center gap-6 text-sm text-white/60 md:flex">
-              <a
-                href="#features"
-                className="transition-colors hover:text-white"
-              >
-                Features
-              </a>
-              <a href="#preview" className="transition-colors hover:text-white">
-                Preview
-              </a>
-              <Link
-                to="/pricing"
-                className="transition-colors hover:text-white"
-              >
-                Pricing
-              </Link>
-            </nav>
-
-            <Button className="rounded-full bg-[color-mix(in_oklch,var(--primary)_90%,black)] px-5 text-sm font-semibold text-white shadow-[0_16px_50px_color-mix(in_oklch,var(--primary)_30%,transparent)] hover:bg-[color-mix(in_oklch,var(--primary)_100%,black)]">
-              Start Building
-            </Button>
-          </header>
-
-          <section className="flex flex-1 items-center justify-center pt-10 sm:pt-14 lg:pt-16">
+        <div className="relative mx-auto flex h-full w-full max-w-7xl flex-col px-5 pb-10 pt-5 sm:px-6 lg:px-8">
+          <div className="flex flex-1 items-center justify-center pt-10 sm:pt-14 lg:pt-16">
             <div className="relative flex w-full max-w-5xl flex-col items-center text-center">
               <div className="pointer-events-none absolute left-1/2 top-[34%] -z-10 -translate-x-1/2 -translate-y-1/2 opacity-70">
                 <div className="loader loader--hero" aria-hidden="true">
@@ -78,9 +37,12 @@ export default function HomePage() {
                 </span>
               </div>
 
-              <h1 className="max-w-3xl text-balance text-5xl font-semibold leading-[0.95] tracking-[-0.06em] text-white sm:text-6xl lg:text-[5.4rem]">
-                Turn thoughts into websites
-                <span className="block">with AI.</span>
+              <h1 className="max-w-5xl text-balance text-5xl font-semibold leading-[1.2] tracking-[-0.04em] text-white sm:text-6xl lg:text-[5.4rem]">
+                Turn thoughts into{" "}
+                <span className="bg-linear-to-r from-primary to-white bg-clip-text text-transparent">
+                  websites
+                </span>
+                <span className="block">with powerful AI.</span>
               </h1>
 
               <p className="mt-6 max-w-2xl text-pretty text-base leading-7 text-white/65 sm:text-lg">
@@ -94,9 +56,9 @@ export default function HomePage() {
                 </label>
                 <Textarea
                   id="prompt"
-                  rows={12}
-                  defaultValue="Describe your presentation in details"
-                  className="w-full resize-none border-0 bg-transparent text-sm text-white/85 outline-none placeholder:text-white/35 sm:text-base"
+                  rows={4}
+                  placeholder="Describe your presentation in details"
+                  className="h-52 w-full resize-none overflow-y-hidden border-none bg-transparent text-sm text-white/85 outline-none placeholder:text-white/35 focus:border-transparent focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:border-transparent focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 sm:text-base"
                 />
 
                 <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -113,24 +75,17 @@ export default function HomePage() {
                   </div>
 
                   <div className="flex justify-center sm:justify-end">
-                    <Button className="rounded-full bg-[linear-gradient(90deg,#b04cff_0%,var(--primary)_100%)] px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_color-mix(in_oklch,var(--primary)_45%,transparent)] hover:bg-[linear-gradient(90deg,#c264ff_0%,color-mix(in_oklch,var(--primary)_88%,white)_100%)]">
+                    <Button className="rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white hover:bg-primary/90">
+                      <BotMessageSquareIcon />
                       Create with AI
                     </Button>
                   </div>
                 </div>
               </div>
-
-              <div className="mt-12 flex w-full max-w-5xl flex-wrap items-center justify-center gap-x-10 gap-y-5 text-sm text-white/45 sm:gap-x-14">
-                <span>Framer</span>
-                <span>HUAWEI</span>
-                <span>Instagram</span>
-                <span>Microsoft</span>
-                <span>Walmart</span>
-              </div>
             </div>
-          </section>
+          </div>
         </div>
       </div>
-    </main>
+    </section>
   );
 }
