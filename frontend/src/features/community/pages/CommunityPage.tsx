@@ -88,22 +88,15 @@ export default function CommunityPage() {
                       <span>{project.createdAt}</span>
 
                       <div className="flex gap-1.5">
-                        <button
-                          onClick={() =>
-                            navigate(`/preview/${project.preview}`)
-                          }
+                        <Button
                           type="button"
-                          className="rounded-md border border-[color-mix(in_oklch,var(--primary)_26%,transparent)] bg-[color-mix(in_oklch,var(--primary)_20%,black)] px-2.5 py-1 text-[11px] font-medium text-white/90 transition hover:bg-[color-mix(in_oklch,var(--primary)_32%,black)]"
+                          className="rounded-md flex items-center justify-center border border-[color-mix(in_oklch,var(--primary)_26%,transparent)] bg-[color-mix(in_oklch,var(--primary)_20%,black)] px-2.5 py-1 text-[11px] font-medium text-white/90 transition hover:bg-[color-mix(in_oklch,var(--primary)_32%,black)]"
                         >
-                          Preview
-                        </button>
-                        <button
-                          onClick={() => navigate(`/projects/${project.id}`)}
-                          type="button"
-                          className="rounded-md bg-white/10 px-2.5 py-1 text-[11px] font-medium text-white/90 transition hover:bg-white/20"
-                        >
-                          Open
-                        </button>
+                          <span className="bg-gray-200 size-3.5 rounded-full text-black font-semibold flex items-center justify-center">
+                            {project.user?.name?.slice(0, 1) || "Anonymous"}
+                          </span>
+                          {project.user?.name}
+                        </Button>
                       </div>
                     </div>
                   </div>

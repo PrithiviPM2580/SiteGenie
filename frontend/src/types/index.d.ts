@@ -12,6 +12,7 @@ export interface ProjectPreviewCard {
   badge: string;
   createdAt: string;
   previewDoc: string;
+  user?: User;
 }
 
 export interface User {
@@ -50,4 +51,12 @@ export interface Project {
   CurrentVersionIndex: string;
   createdAt: string;
   upadatedAt: string;
+}
+export interface Plan {
+  id: string;
+  name: string;
+  price: string;
+  credits: string;
+  description: string;
+  features: string[];
 }

@@ -1,4 +1,4 @@
-import type { NavbarItem, ProjectPreviewCard } from "@/types";
+import type { NavbarItem, Plan, ProjectPreviewCard } from "@/types";
 
 export const NAVBAR: NavbarItem[] = [
   {
@@ -34,6 +34,7 @@ export const DUMMY_PROJECT_CARDS: ProjectPreviewCard[] = [
     createdAt: "11/19/2025",
     previewDoc:
       "<!doctype html><html><head><meta charset='utf-8'/><style>body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#060d1d;color:#d9ecff;display:grid;place-items:center;height:100vh}h1{font-size:28px;margin:0 0 8px}p{opacity:.8;margin:0}.chip{margin-top:16px;padding:8px 14px;border-radius:999px;border:1px solid #3a7dff;background:#0f203f}</style></head><body><main><h1>Hi, I'm Alex Jr.</h1><p>Front-end developer portfolio</p><div class='chip'>View Projects</div></main></body></html>",
+    user: { id: "user-1", email: "alex@example.com", name: "Alex Jr." },
   },
   {
     id: "project-2",
@@ -44,6 +45,7 @@ export const DUMMY_PROJECT_CARDS: ProjectPreviewCard[] = [
     createdAt: "11/19/2025",
     previewDoc:
       "<!doctype html><html><head><meta charset='utf-8'/><style>body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f6f8fc;color:#20242d}header{padding:12px 16px;background:#fff;border-bottom:1px solid #e5e9f2}section{display:grid;grid-template-columns:1.2fr .8fr;gap:12px;padding:16px}.card{height:130px;border-radius:12px;background:#fff;border:1px solid #e5e9f2}.ring{display:grid;place-items:center;font-size:24px;color:#5a5f73;background:conic-gradient(#8b8ff8 68%,#e8ebf8 0)}</style></head><body><header>Dashboard</header><section><div class='card'></div><div class='card ring'>68%</div></section></body></html>",
+    user: { id: "user-2", email: "sarah@example.com", name: "Sarah" },
   },
   {
     id: "project-3",
@@ -54,6 +56,7 @@ export const DUMMY_PROJECT_CARDS: ProjectPreviewCard[] = [
     createdAt: "11/17/2025",
     previewDoc:
       "<!doctype html><html><head><meta charset='utf-8'/><style>body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef7f5;color:#113e36;display:grid;place-items:center;height:100vh}h1{margin:0;font-size:34px}.sub{margin-top:6px;opacity:.8;text-align:center}</style></head><body><main><h1>Hi, I'm Your Name</h1><p class='sub'>Personal developer portfolio</p></main></body></html>",
+    user: { id: "user-3", email: "john@example.com", name: "John" },
   },
   {
     id: "project-4",
@@ -64,6 +67,7 @@ export const DUMMY_PROJECT_CARDS: ProjectPreviewCard[] = [
     createdAt: "11/14/2025",
     previewDoc:
       "<!doctype html><html><head><meta charset='utf-8'/><style>body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#1a1f2f;color:#fff;display:grid;place-items:center;height:100vh}.calc{width:220px;padding:14px;border-radius:14px;background:#0f1320;border:1px solid #2f3956}.screen{height:34px;border-radius:8px;background:#24304d;margin-bottom:10px}.row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.key{height:28px;border-radius:8px;background:#2a3450}</style></head><body><div class='calc'><div class='screen'></div><div class='row'><div class='key'></div><div class='key'></div><div class='key'></div><div class='key'></div></div></div></body></html>",
+    user: { id: "user-4", email: "mike@example.com", name: "Mike" },
   },
   {
     id: "project-5",
@@ -74,5 +78,51 @@ export const DUMMY_PROJECT_CARDS: ProjectPreviewCard[] = [
     createdAt: "11/24/2025",
     previewDoc:
       "<!doctype html><html><head><meta charset='utf-8'/><style>body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#fff;color:#111;display:grid;place-items:center;height:100vh}.box{width:300px;text-align:center}.btn{display:inline-block;margin-top:12px;padding:8px 12px;border-radius:999px;background:#111;color:#fff}</style></head><body><div class='box'><h2>Excellence in Minimalism</h2><p>Simple monochrome landing page</p><span class='btn'>Get Started</span></div></body></html>",
+    user: { id: "user-5", email: "emma@example.com", name: "Emma" },
+  },
+];
+
+export const PRICING_PLANS: Plan[] = [
+  {
+    id: "basic",
+    name: "Basic",
+    price: "$5",
+    credits: "100 credits",
+    description: "Start now, scale up as you grow.",
+    features: [
+      "Upto 20 Creations",
+      "Limited Revisions",
+      "Basic AI Models",
+      "email support",
+      "Basic analytics",
+    ],
+  },
+  {
+    id: "pro",
+    name: "Pro",
+    price: "$19",
+    credits: "400 credits",
+    description: "Add credits to create more projects",
+    features: [
+      "Upto 40 Creations",
+      "Extended Revisions",
+      "Advanced AI Models",
+      "priority email support",
+      "Advanced analytics",
+    ],
+  },
+  {
+    id: "enterprise",
+    name: "Enterprise",
+    price: "$49",
+    credits: "1000 credits",
+    description: "Add credits to create more projects",
+    features: [
+      "Upto 200 Creations",
+      "Increased Revisions",
+      "Advanced AI Models",
+      "email + chat support",
+      "Advanced analytics",
+    ],
   },
 ];
