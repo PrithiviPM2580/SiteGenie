@@ -5,7 +5,7 @@ import logo from "@/assets/logo.png";
 
 export default function Navbar() {
   return (
-    <header className="w-full max-w-7xl fixed top-6 left-1/2 -translate-x-1/2 z-10 flex items-center justify-between rounded-full border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-xl">
+    <header className="w-full mx-4 max-w-7xl fixed top-6 left-1/2 -translate-x-1/2 z-10 flex items-center justify-between rounded-full border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-xl">
       <div className="flex items-center gap-3">
         <div className="w-6 h-6 rounded-sm overflow-hidden">
           <Link to="/">

@@ -9,6 +9,8 @@ export default function ProjectsPage() {
   const loading = false;
   const navigate = useNavigate();
 
+  const deleteProject = (projectId: string) => {};
+
   const getPreviewDoc = (doc: string) =>
     doc.includes("</head>")
       ? doc.replace(

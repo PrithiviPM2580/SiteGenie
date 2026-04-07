@@ -13,8 +13,8 @@ export const NAVBAR: NavbarItem[] = [
   },
   {
     id: 3,
-    name: "Preview",
-    link: "/preview",
+    name: "Community",
+    link: "/community",
   },
   {
     id: 4,
